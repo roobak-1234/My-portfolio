@@ -8,28 +8,28 @@
   :root {
     /* Light Whitey Pink Theme */
     --background: 0 0% 98%;
-    --foreground: 340 15% 15%;
+    --foreground: 0 0% 0%;
     
     --card: 0 0% 100%;
-    --card-foreground: 340 15% 15%;
+    --card-foreground: 0 0% 0%;
     
     --popover: 0 0% 100%;
-    --popover-foreground: 340 15% 15%;
+    --popover-foreground: 0 0% 0%;
     
     /* Soft Pink Gradient Primary */
     --primary: 330 85% 70%;
     --primary-glow: 340 90% 80%;
-    --primary-foreground: 0 0% 100%;
+    --primary-foreground: 0 0% 0%;
     
     /* Secondary Accent Colors */
     --secondary: 330 20% 95%;
-    --secondary-foreground: 340 15% 15%;
+    --secondary-foreground: 0 0% 0%;
     
     --muted: 330 15% 96%;
-    --muted-foreground: 340 10% 45%;
+    --muted-foreground: 0 0% 20%;
     
     --accent: 320 80% 75%;
-    --accent-foreground: 0 0% 100%;
+    --accent-foreground: 0 0% 0%;
     
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
