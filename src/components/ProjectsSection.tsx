@@ -1,5 +1,6 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { ExternalLink, Github, Smartphone, Brain, TrendingUp } from 'lucide-react';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 
 export const ProjectsSection = () => {
   const [ref, isVisible] = useScrollAnimation();
@@ -86,18 +87,44 @@ export const ProjectsSection = () => {
 
                 {/* Links */}
                 <div className="flex gap-4">
-                  {project.links.demo && (
+                  {project.links.demo && project.title === "Multi-User AR Application" ? (
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <button className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg interactive-hover text-sm">
+                          <ExternalLink className="w-4 h-4" />
+                          Demo
+                        </button>
+                      </DialogTrigger>
+                      <DialogContent className="max-w-4xl w-full h-[80vh]">
+                        <DialogHeader>
+                          <DialogTitle>{project.title} - Live Demo</DialogTitle>
+                        </DialogHeader>
+                        <div className="flex-1 w-full">
+                          <iframe
+                            src={project.links.demo}
+                            className="w-full h-full rounded-lg border"
+                            title={`${project.title} Demo`}
+                            allow="camera; microphone; gyroscope; accelerometer; xr-spatial-tracking"
+                          />
+                        </div>
+                      </DialogContent>
+                    </Dialog>
+                  ) : project.links.demo ? (
                     <a
                       href={project.links.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg interactive-hover text-sm"
                     >
                       <ExternalLink className="w-4 h-4" />
                       Demo
                     </a>
-                  )}
+                  ) : null}
                   {project.links.github && (
                     <a
                       href={project.links.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="flex items-center gap-2 px-4 py-2 border border-border rounded-lg interactive-hover text-sm"
                     >
                       <Github className="w-4 h-4" />
