@@ -2,12 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Modern Purple/Violet Design System - All colors MUST be HSL */
+/* Modern Blue/Cyan Design System - All colors MUST be HSL */
 
 @layer base {
   :root {
-    /* Modern Purple/Violet Theme */
-    --background: 270 30% 98%;
+    /* Modern Blue/Cyan Theme */
+    --background: 210 40% 98%;
     --foreground: 0 0% 0%;
     
     --card: 0 0% 100%;
@@ -16,35 +16,35 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 0%;
     
-    /* Vibrant Purple/Violet Gradient Primary */
-    --primary: 270 95% 65%;
-    --primary-glow: 285 100% 75%;
+    /* Vibrant Blue/Cyan Gradient Primary */
+    --primary: 200 100% 60%;
+    --primary-glow: 180 100% 70%;
     --primary-foreground: 0 0% 0%;
     
     /* Secondary Accent Colors */
-    --secondary: 270 25% 95%;
+    --secondary: 210 40% 95%;
     --secondary-foreground: 0 0% 0%;
     
-    --muted: 270 20% 96%;
+    --muted: 210 30% 96%;
     --muted-foreground: 0 0% 20%;
     
-    --accent: 255 100% 70%;
+    --accent: 190 100% 65%;
     --accent-foreground: 0 0% 0%;
     
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
     
-    --border: 270 25% 90%;
-    --input: 270 20% 94%;
-    --ring: 270 95% 65%;
+    --border: 210 30% 90%;
+    --input: 210 30% 94%;
+    --ring: 200 100% 60%;
     
     --radius: 0.75rem;
     
     /* Custom Design Tokens */
-    --hero-gradient: linear-gradient(135deg, hsl(270 95% 65%), hsl(285 100% 75%));
-    --card-gradient: linear-gradient(135deg, hsl(0 0% 100%), hsl(270 30% 98%));
-    --glow-primary: 0 0 40px hsl(270 95% 65% / 0.25);
-    --glow-secondary: 0 0 40px hsl(285 100% 75% / 0.2);
+    --hero-gradient: linear-gradient(135deg, hsl(200 100% 60%), hsl(180 100% 70%));
+    --card-gradient: linear-gradient(135deg, hsl(0 0% 100%), hsl(210 40% 98%));
+    --glow-primary: 0 0 40px hsl(200 100% 60% / 0.25);
+    --glow-secondary: 0 0 40px hsl(180 100% 70% / 0.2);
     
     /* Animation Variables */
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -52,15 +52,15 @@
     --transition-section: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     
     /* Timeline Colors */
-    --timeline-line: 270 95% 65%;
-    --timeline-dot: 285 100% 75%;
+    --timeline-line: 200 100% 60%;
+    --timeline-dot: 180 100% 70%;
     
     /* Custom Cursor */
     --cursor-size: 8px;
     --cursor-hover-size: 40px;
     
     /* Section Transition */
-    --section-transition-bg: linear-gradient(180deg, hsl(270 30% 98%), hsl(270 25% 96%));
+    --section-transition-bg: linear-gradient(180deg, hsl(210 40% 98%), hsl(210 30% 96%));
   }
 }
 
