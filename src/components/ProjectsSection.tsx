@@ -10,8 +10,8 @@ export const ProjectsSection = () => {
       description: "A collaborative Augmented Reality application for multiple users to interact with shared virtual objects in a real-world environment. Implemented real-time synchronization using Photon Engine.",
       techStack: ["Unity", "C#", "Photon Engine", "AR Foundation"],
       links: {
-        demo: "#",
-        github: "#"
+        demo: "https://68be97147e1db67d41344aae--areality.netlify.app/",
+        github: "https://github.com/roobak-1234"
       },
       icon: Smartphone,
       gradient: "from-primary to-accent"
@@ -21,7 +21,7 @@ export const ProjectsSection = () => {
       description: "Developed a machine learning model to classify iris flower species based on their sepal and petal measurements. Implemented algorithms like K-Nearest Neighbors to achieve high accuracy.",
       techStack: ["Python", "Scikit-learn", "Pandas", "Matplotlib"],
       links: {
-        github: "#"
+        github: "https://github.com/roobak-1234"
       },
       icon: Brain,
       gradient: "from-accent to-primary"
@@ -31,7 +31,7 @@ export const ProjectsSection = () => {
       description: "Built a predictive model to forecast future product sales using historical data. Employed time-series analysis and regression techniques to provide actionable insights for inventory management.",
       techStack: ["Python", "TensorFlow", "Pandas", "Seaborn"],
       links: {
-        github: "#"
+        github: "https://github.com/roobak-1234"
       },
       icon: TrendingUp,
       gradient: "from-primary/80 to-accent/80"
