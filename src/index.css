@@ -2,12 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Whitey Pink Design System - All colors MUST be HSL */
+/* Modern Blue/Cyan Design System - All colors MUST be HSL */
 
 @layer base {
   :root {
-    /* Light Whitey Pink Theme */
-    --background: 0 0% 98%;
+    /* Modern Blue/Cyan Theme */
+    --background: 210 40% 98%;
     --foreground: 0 0% 0%;
     
     --card: 0 0% 100%;
@@ -16,35 +16,35 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 0%;
     
-    /* Soft Pink Gradient Primary */
-    --primary: 330 85% 70%;
-    --primary-glow: 340 90% 80%;
+    /* Vibrant Blue/Cyan Gradient Primary */
+    --primary: 200 100% 60%;
+    --primary-glow: 180 100% 70%;
     --primary-foreground: 0 0% 0%;
     
     /* Secondary Accent Colors */
-    --secondary: 330 20% 95%;
+    --secondary: 210 40% 95%;
     --secondary-foreground: 0 0% 0%;
     
-    --muted: 330 15% 96%;
+    --muted: 210 30% 96%;
     --muted-foreground: 0 0% 20%;
     
-    --accent: 320 80% 75%;
+    --accent: 190 100% 65%;
     --accent-foreground: 0 0% 0%;
     
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
     
-    --border: 330 20% 90%;
-    --input: 330 20% 94%;
-    --ring: 330 85% 70%;
+    --border: 210 30% 90%;
+    --input: 210 30% 94%;
+    --ring: 200 100% 60%;
     
     --radius: 0.75rem;
     
     /* Custom Design Tokens */
-    --hero-gradient: linear-gradient(135deg, hsl(330 85% 70%), hsl(340 90% 80%));
-    --card-gradient: linear-gradient(135deg, hsl(0 0% 100%), hsl(330 20% 98%));
-    --glow-primary: 0 0 40px hsl(330 85% 70% / 0.25);
-    --glow-secondary: 0 0 40px hsl(340 90% 80% / 0.2);
+    --hero-gradient: linear-gradient(135deg, hsl(200 100% 60%), hsl(180 100% 70%));
+    --card-gradient: linear-gradient(135deg, hsl(0 0% 100%), hsl(210 40% 98%));
+    --glow-primary: 0 0 40px hsl(200 100% 60% / 0.25);
+    --glow-secondary: 0 0 40px hsl(180 100% 70% / 0.2);
     
     /* Animation Variables */
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -52,15 +52,15 @@
     --transition-section: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     
     /* Timeline Colors */
-    --timeline-line: 330 85% 70%;
-    --timeline-dot: 340 90% 80%;
+    --timeline-line: 200 100% 60%;
+    --timeline-dot: 180 100% 70%;
     
     /* Custom Cursor */
     --cursor-size: 8px;
     --cursor-hover-size: 40px;
     
     /* Section Transition */
-    --section-transition-bg: linear-gradient(180deg, hsl(0 0% 98%), hsl(330 20% 98%));
+    --section-transition-bg: linear-gradient(180deg, hsl(210 40% 98%), hsl(210 30% 96%));
   }
 }
 
