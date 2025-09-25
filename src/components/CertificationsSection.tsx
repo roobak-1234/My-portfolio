@@ -1,6 +1,7 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { Award, Cloud, Shield, Cpu, Users, Database } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 export const CertificationsSection = () => {
   const [ref, isVisible] = useScrollAnimation();
@@ -65,54 +66,71 @@ export const CertificationsSection = () => {
   ];
 
   return (
-    <section id="certifications" className="py-20 px-6">
-      <div className="max-w-6xl mx-auto">
-        <div ref={ref} className={`text-center mb-16 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
-          <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-6">Certifications</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Continuous learning and professional development achievements
-          </p>
-        </div>
+    <TooltipProvider delayDuration={1000}>
+      <section id="certifications" className="py-20 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div ref={ref} className={`text-center mb-16 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
+            <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-6">Certifications</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Continuous learning and professional development achievements
+            </p>
+          </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {certifications.map((cert, index) => (
-            <Dialog key={cert.name}>
-              <DialogTrigger asChild>
-                <div
-                  className={`group glass-effect rounded-2xl p-6 interactive-hover text-center cursor-pointer ${
-                    isVisible ? 'animate-scale-in' : 'opacity-0'
-                  }`}
-                  style={{ animationDelay: `${index * 150}ms` }}
-                >
-                  <div className="flex justify-center mb-4">
-                    <div className="p-4 bg-secondary rounded-2xl group-hover:scale-110 transition-transform duration-300">
-                      <cert.icon className={`w-8 h-8 ${cert.color}`} />
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {certifications.map((cert, index) => (
+              <Dialog key={cert.name}>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <DialogTrigger asChild>
+                      <div
+                        className={`group glass-effect rounded-2xl p-6 interactive-hover text-center cursor-pointer ${
+                          isVisible ? 'animate-scale-in' : 'opacity-0'
+                        }`}
+                        style={{ animationDelay: `${index * 150}ms` }}
+                      >
+                        <div className="flex justify-center mb-4">
+                          <div className="p-4 bg-secondary rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                            <cert.icon className={`w-8 h-8 ${cert.color}`} />
+                          </div>
+                        </div>
+                        
+                        <h3 className="text-lg font-bold mb-2">{cert.name}</h3>
+                        <p className="text-sm text-muted-foreground">{cert.provider}</p>
+                        
+                        {/* Hover effect overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      </div>
+                    </DialogTrigger>
+                  </TooltipTrigger>
+                  <TooltipContent side="top" className="p-2 max-w-xs">
+                    <div className="text-center">
+                      <img
+                        src={cert.image}
+                        alt={`${cert.name} Certificate Preview`}
+                        className="w-48 h-32 object-contain rounded-md mb-2"
+                      />
+                      <p className="font-medium text-sm">{cert.name}</p>
+                      <p className="text-xs text-muted-foreground">{cert.provider}</p>
                     </div>
+                  </TooltipContent>
+                </Tooltip>
+                <DialogContent className="max-w-2xl w-full max-h-[70vh] p-4">
+                  <DialogHeader className="pb-2">
+                    <DialogTitle className="text-lg">{cert.name} - {cert.provider}</DialogTitle>
+                  </DialogHeader>
+                  <div className="flex justify-center">
+                    <img
+                      src={cert.image}
+                      alt={`${cert.name} Certificate`}
+                      className="max-w-full max-h-[50vh] object-contain rounded-lg"
+                    />
                   </div>
-                  
-                  <h3 className="text-lg font-bold mb-2">{cert.name}</h3>
-                  <p className="text-sm text-muted-foreground">{cert.provider}</p>
-                  
-                  {/* Hover effect overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-              </DialogTrigger>
-              <DialogContent className="max-w-4xl w-full h-[80vh] p-0">
-                <DialogHeader className="p-6 pb-0">
-                  <DialogTitle>{cert.name} - {cert.provider}</DialogTitle>
-                </DialogHeader>
-                <div className="flex-1 w-full p-6 pt-0">
-                  <img
-                    src={cert.image}
-                    alt={`${cert.name} Certificate`}
-                    className="w-full h-full object-contain rounded-lg"
-                  />
-                </div>
-              </DialogContent>
-            </Dialog>
-          ))}
+                </DialogContent>
+              </Dialog>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </TooltipProvider>
   );
 };
