@@ -95,16 +95,21 @@ export const ProjectsSection = () => {
                           Demo
                         </button>
                       </DialogTrigger>
-                      <DialogContent className="max-w-4xl w-full h-[80vh]">
-                        <DialogHeader>
-                          <DialogTitle>{project.title} - Live Demo</DialogTitle>
+                      <DialogContent className="max-w-[95vw] w-full h-[90vh] p-0">
+                        <DialogHeader className="p-4 pb-2 border-b">
+                          <DialogTitle className="text-lg">{project.title} - Live Demo</DialogTitle>
                         </DialogHeader>
-                        <div className="flex-1 w-full">
+                        <div className="flex-1 w-full h-[calc(90vh-60px)] p-4">
                           <iframe
                             src={project.links.demo}
-                            className="w-full h-full rounded-lg border"
+                            className="w-full h-full rounded-lg border-0"
                             title={`${project.title} Demo`}
                             allow="camera; microphone; gyroscope; accelerometer; xr-spatial-tracking"
+                            style={{ 
+                              transform: 'scale(1)', 
+                              transformOrigin: 'top left',
+                              overflow: 'hidden'
+                            }}
                           />
                         </div>
                       </DialogContent>
