@@ -67,7 +67,6 @@
 @layer base {
   * {
     @apply border-border;
-    cursor: none;
   }
 
   body {
@@ -168,7 +167,6 @@
   /* Hover Interactive Elements */
   .interactive-hover {
     transition: var(--transition-smooth);
-    cursor: none;
   }
 
   .interactive-hover:hover {
