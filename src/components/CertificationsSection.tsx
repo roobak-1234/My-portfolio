@@ -66,7 +66,7 @@ export const CertificationsSection = () => {
   ];
 
   return (
-    <TooltipProvider delayDuration={1000}>
+    <TooltipProvider delayDuration={300}>
       <section id="certifications" className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
           <div ref={ref} className={`text-center mb-16 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
