@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
+import emailjs from '@emailjs/browser';
 
 export const ContactSection = () => {
   const [ref, isVisible] = useScrollAnimation();
@@ -17,6 +18,7 @@ export const ContactSection = () => {
     message: ''
   });
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -24,7 +26,7 @@ export const ContactSection = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     // Basic validation
@@ -37,15 +39,59 @@ export const ContactSection = () => {
       return;
     }
 
-    // For now, just show success message - backend needed for actual email sending
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for your message. I'll get back to you soon!",
-    });
+    // Check if EmailJS credentials are configured
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
-    // Reset form and close dialog
-    setFormData({ name: '', email: '', subject: '', message: '' });
-    setIsDialogOpen(false);
+    if (!serviceId || !templateId || !publicKey || 
+        serviceId.includes('abc123') || templateId.includes('xyz789') || publicKey.includes('def456')) {
+      toast({
+        title: "Configuration Error",
+        description: "EmailJS is not properly configured. Please check your .env file.",
+        variant: "destructive",
+      });
+      console.error('EmailJS credentials not configured properly');
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      console.log('Sending email with:', { serviceId, templateId, publicKey: publicKey.substring(0, 10) + '...' });
+      
+      const result = await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject || 'Portfolio Contact',
+          message: formData.message,
+          to_name: 'Roobak Kumar M',
+        },
+        publicKey
+      );
+
+      console.log('EmailJS Success:', result);
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for your message. I'll get back to you soon!",
+      });
+
+      // Reset form and close dialog
+      setFormData({ name: '', email: '', subject: '', message: '' });
+      setIsDialogOpen(false);
+    } catch (error: any) {
+      console.error('EmailJS Error:', error);
+      toast({
+        title: "Error",
+        description: error?.text || "Failed to send message. Please try again or contact me directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const contactInfo = [
@@ -164,9 +210,13 @@ export const ContactSection = () => {
                       required
                     />
                   </div>
-                  <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
+                  <Button 
+                    type="submit" 
+                    disabled={isLoading}
+                    className="w-full bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-50"
+                  >
                     <Send className="w-4 h-4 mr-2" />
-                    Send Message
+                    {isLoading ? 'Sending...' : 'Send Message'}
                   </Button>
                 </form>
               </DialogContent>
