@@ -1,4 +1,5 @@
 import { Navigation } from '@/components/Navigation';
+import { SectionProgressIndicator } from '@/components/SectionProgressIndicator';
 import { HeroSection } from '@/components/HeroSection';
 import { SkillsSection } from '@/components/SkillsSection';
 import { ExperienceSection } from '@/components/ExperienceSection';
@@ -11,14 +12,21 @@ const Index = () => {
   return (
     <>
       <Navigation />
+      <SectionProgressIndicator />
       
       <main className="relative">
         <HeroSection />
-        <SkillsSection />
+        <div className="bg-muted/30">
+          <SkillsSection />
+        </div>
         <ExperienceSection />
-        <ProjectsSection />
+        <div className="bg-muted/30">
+          <ProjectsSection />
+        </div>
         <EducationSection />
-        <CertificationsSection />
+        <div className="bg-muted/30">
+          <CertificationsSection />
+        </div>
         <ContactSection />
       </main>
     </>
