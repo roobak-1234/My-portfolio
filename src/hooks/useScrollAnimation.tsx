@@ -6,7 +6,9 @@ export const useScrollAnimation = (threshold = 0.1) => {
 
   const handleIntersection = useCallback((entries: IntersectionObserverEntry[]) => {
     const [entry] = entries;
-    setIsVisible(entry.isIntersecting);
+    if (entry.isIntersecting) {
+      setIsVisible(true);
+    }
   }, []);
 
   useEffect(() => {
