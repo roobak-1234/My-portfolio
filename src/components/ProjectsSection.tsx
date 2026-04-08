@@ -19,7 +19,7 @@ const projects = [
     description: "A collaborative Augmented Reality application for multiple users to interact with shared virtual objects in a real-world environment. Implemented real-time synchronization using Photon Engine.",
     techStack: ["Unity", "C#", "Photon Engine", "AR Foundation"],
     links: {
-      demo: "https://68be97147e1db67d41344aae--areality.netlify.app/"
+      demo: "https://areality.netlify.app/"
     },
     icon: Smartphone,
     color: "#47daff"
@@ -57,9 +57,10 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0], index: n
   const rotateY = useSpring(y, springConfig);
 
   const [isHovered, setIsHovered] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    if (!ref.current) return;
+    if (!ref.current || isOpen) return;
     const rect = ref.current.getBoundingClientRect();
     const width = rect.width;
     const height = rect.height;
@@ -76,8 +77,19 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0], index: n
 
   const handleMouseLeave = () => {
     setIsHovered(false);
-    x.set(0);
-    y.set(0);
+    if (!isOpen) {
+      x.set(0);
+      y.set(0);
+    }
+  };
+
+  const handleOpenChange = (open: boolean) => {
+    setIsOpen(open);
+    if (!open) {
+      x.set(0);
+      y.set(0);
+      setIsHovered(false);
+    }
   };
 
   return (
@@ -95,19 +107,19 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0], index: n
         rotateY,
         transformPerspective: 1000,
       }}
-      className="relative rounded-2xl p-[1px] group z-10"
+      className="relative rounded-2xl p-[1px] group z-10 h-full flex flex-col"
     >
       {/* Static subtle border */}
       <div className="absolute inset-0 rounded-2xl border border-white/10 -z-10" />
 
-      <div className="h-full flex flex-col p-6 rounded-2xl relative overflow-hidden backdrop-blur-sm border border-white/10 shadow-[0_0_30px_rgba(255,255,255,0.03)]">
+      <div className="flex-1 flex flex-col p-6 rounded-2xl relative overflow-hidden backdrop-blur-sm border border-white/10 shadow-[0_0_30px_rgba(255,255,255,0.03)] bg-card/40">
 
 
         <div className="flex items-center mb-4 z-10">
           <div className="p-3 rounded-xl mr-4 border border-white/10 bg-white/5">
             <project.icon className="w-6 h-6 text-white" />
           </div>
-          <h3 className="text-xl font-bold text-white">{project.title}</h3>
+          <h3 className="text-xl font-bold text-white uppercase tracking-wider">{project.title}</h3>
         </div>
 
         <p className="text-foreground/80 mb-6 flex-grow z-10 text-sm leading-relaxed">
@@ -125,24 +137,27 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0], index: n
           ))}
         </div>
 
-        <div className="flex gap-4 z-10">
+        <div className="flex gap-4 z-10 mt-auto">
           {project.links.demo && project.title === "Multi-User AR Application" ? (
-            <Dialog>
+            <Dialog open={isOpen} onOpenChange={handleOpenChange}>
               <DialogTrigger asChild>
                 <button className="flex items-center justify-center flex-1 gap-2 py-2 bg-white/5 hover:bg-white/10 text-white border border-white/20 transition-colors rounded-lg text-sm font-medium">
                   <ExternalLink className="w-4 h-4" />
                   View Demo
                 </button>
               </DialogTrigger>
-              <DialogContent className="max-w-[95vw] w-full h-[90vh] p-0 border-primary bg-black/90 backdrop-blur-xl rounded-xl">
-                <DialogHeader className="p-4 border-b border-primary/30">
-                  <DialogTitle className="text-primary font-bold select-none">AR Demo</DialogTitle>
+              <DialogContent className="max-w-[95vw] w-full h-[90vh] p-0 border-white/10 bg-black/95 backdrop-blur-2xl rounded-2xl overflow-hidden shadow-2xl">
+                <DialogHeader className="p-4 border-b border-white/10 bg-white/5">
+                  <DialogTitle className="text-white font-bold select-none text-xl">
+                    Collaborative AR Experience
+                  </DialogTitle>
                 </DialogHeader>
-                <div className="flex-1 w-full h-[calc(90vh-60px)] p-2">
+                <div className="flex-1 w-full h-[calc(90vh-70px)] bg-black/50">
                   <iframe
                     src={project.links.demo}
-                    className="w-full h-full rounded-lg border border-primary/20"
+                    className="w-full h-full border-none"
                     title={`${project.title} Demo`}
+                    allow="camera;gyroscope;accelerometer"
                   />
                 </div>
               </DialogContent>
