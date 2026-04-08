@@ -1,5 +1,5 @@
 import { Navigation } from '@/components/Navigation';
-import { SectionProgressIndicator } from '@/components/SectionProgressIndicator';
+
 import { HeroSection } from '@/components/HeroSection';
 import { SkillsSection } from '@/components/SkillsSection';
 import { ExperienceSection } from '@/components/ExperienceSection';
