@@ -108,6 +108,7 @@ export const ContactSection = () => {
 
         <div className="grid md:grid-cols-3 gap-8 mb-16">
           {contactInfo.map((contact, index) => {
+            const isLocation = contact.label === "Location";
             const isLink = contact.href !== "#";
             const CardComponent = isLink ? motion.a : motion.div;
             
@@ -121,10 +122,10 @@ export const ContactSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className={`group relative border border-white/10 backdrop-blur-sm rounded-2xl p-6 text-center transition-all duration-500 block ${isLink ? 'cursor-pointer' : 'cursor-default'} hover:border-white/30 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] overflow-hidden h-44`}
+                className={`group relative border border-white/10 backdrop-blur-sm rounded-2xl p-6 text-center transition-all duration-500 block ${isLink ? 'cursor-pointer' : 'cursor-default'} ${isLocation ? 'hover:border-white/30 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] h-44' : 'h-44'} overflow-hidden`}
               >
                 {/* Map Reveal (Only for Location) */}
-                {contact.label === "Location" && (
+                {isLocation && (
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
                     <iframe 
                       width="100%" 
@@ -139,13 +140,13 @@ export const ContactSection = () => {
                   </div>
                 )}
 
-                <div className="flex justify-center mb-4 relative z-10 transition-transform duration-500 group-hover:-translate-y-2">
-                  <div className="p-4 bg-white/5 rounded-xl transition-all duration-300 group-hover:bg-white/10">
+                <div className={`flex justify-center mb-4 relative z-10 transition-transform duration-500 ${isLocation ? 'group-hover:-translate-y-2' : ''}`}>
+                  <div className={`p-4 bg-white/5 rounded-xl transition-all duration-300 ${isLocation ? 'group-hover:bg-white/10' : ''}`}>
                     <contact.icon className="w-6 h-6 text-white" />
                   </div>
                 </div>
                 
-                <div className="relative z-10 transition-all duration-500 group-hover:opacity-0 group-hover:translate-y-2">
+                <div className={`relative z-10 transition-all duration-500 ${isLocation ? 'group-hover:opacity-0 group-hover:translate-y-2' : ''}`}>
                   <h3 className="text-lg font-bold mb-1 text-white">{contact.label}</h3>
                   <p className="text-sm text-white/70">{contact.value}</p>
                 </div>
