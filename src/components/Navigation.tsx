@@ -38,25 +38,35 @@ export const Navigation = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 glass-effect">
+    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-black/10 backdrop-blur-md">
       <div className="max-w-6xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <div className="gradient-text text-xl font-bold">RKM</div>
+          <div className="text-white font-bold text-xl tracking-tight select-none">
+            Roobak Kumar M
+          </div>
           
-          <div className="hidden md:flex items-center gap-8">
-            {navItems.map(({ id, label }) => (
-              <button
-                key={id}
-                onClick={() => scrollToSection(id)}
-                className={`interactive-hover px-4 py-2 rounded-full transition-all duration-300 ${
-                  activeSection === id
-                    ? 'bg-primary text-primary-foreground'
-                    : 'text-foreground hover:text-primary'
-                }`}
-              >
-                {label}
-              </button>
-            ))}
+          <div className="hidden md:flex items-center gap-6">
+            {navItems.map(({ id, label }) => {
+              const isActive = activeSection === id;
+              return (
+                <button
+                  key={id}
+                  onClick={() => scrollToSection(id)}
+                  className={`text-sm px-3 py-2 transition-all duration-300 relative group ${
+                    isActive
+                      ? 'text-white font-semibold'
+                      : 'text-white/60 hover:text-white'
+                  }`}
+                >
+                  {label}
+                  <span 
+                    className={`absolute bottom-0 left-0 h-[2px] bg-white transition-all duration-300 ${
+                      isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                    }`} 
+                  />
+                </button>
+              );
+            })}
           </div>
         </div>
       </div>

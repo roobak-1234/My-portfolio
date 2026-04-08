@@ -49,8 +49,8 @@ export const SectionProgressIndicator = () => {
                 <div
                   className={`w-3 h-3 rounded-full border-2 transition-all duration-300 ${
                     isActive
-                      ? 'bg-primary border-primary scale-125'
-                      : 'bg-background border-border hover:border-primary'
+                      ? 'bg-white border-white scale-125'
+                      : 'bg-transparent border-white/20 hover:border-white'
                   }`}
                 />
                 <div
@@ -58,9 +58,9 @@ export const SectionProgressIndicator = () => {
                     isActive ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-2'
                   }`}
                 >
-                  <div className="bg-card border border-border rounded-lg px-3 py-1 shadow-lg">
-                    <span className="text-sm font-medium text-primary">{label}</span>
-                    <span className="text-xs text-muted-foreground ml-2">{name}</span>
+                  <div className="bg-transparent border border-white/10 rounded-lg px-3 py-1 backdrop-blur-sm">
+                    <span className="text-sm font-medium text-white">{label}</span>
+                    <span className="text-xs text-white/50 ml-2">{name}</span>
                   </div>
                 </div>
               </div>

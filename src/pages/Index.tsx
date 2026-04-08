@@ -8,28 +8,36 @@ import { EducationSection } from '@/components/EducationSection';
 import { CertificationsSection } from '@/components/CertificationsSection';
 import { ContactSection } from '@/components/ContactSection';
 
+const VIDEO_SRC = "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260314_131748_f2ca2a28-fed7-44c8-b9a9-bd9acdd5ec31.mp4";
+
 const Index = () => {
   return (
-    <>
-      <Navigation />
-      <SectionProgressIndicator />
-      
-      <main className="relative">
-        <HeroSection />
-        <div className="bg-muted/30">
+    <div className="relative">
+      {/* Video Background — spans full page */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="fixed inset-0 w-full h-full object-cover z-0 opacity-80"
+      >
+        <source src={VIDEO_SRC} type="video/mp4" />
+      </video>
+
+      <div className="relative z-10 w-full">
+        <Navigation />
+        
+        <main className="relative">
+          <HeroSection />
           <SkillsSection />
-        </div>
-        <ExperienceSection />
-        <div className="bg-muted/30">
+          <ExperienceSection />
           <ProjectsSection />
-        </div>
-        <EducationSection />
-        <div className="bg-muted/30">
+          <EducationSection />
           <CertificationsSection />
-        </div>
-        <ContactSection />
-      </main>
-    </>
+          <ContactSection />
+        </main>
+      </div>
+    </div>
   );
 };
 
