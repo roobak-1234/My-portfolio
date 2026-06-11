@@ -11,7 +11,7 @@ const experiences = [
     description: "Developed AI-based solutions, collaborated on AI model design, and gained hands-on experience in applied machine learning concepts during a 4-week internship.",
     icon: Brain,
     color: "#47daff",
-    certificate: "/lovable-uploads/codsoft-certificate.png"
+    certificate: "/uploads/codsoft-certificate.png"
   },
   {
     title: "Data Science Intern",
@@ -20,7 +20,7 @@ const experiences = [
     description: "Engineered data preprocessing and visualization pipelines, implemented basic machine learning models for insights, and applied data science techniques to solve project goals.",
     icon: BarChart3,
     color: "#a78bfa",
-    certificate: "/lovable-uploads/oasis-certificate.png"
+    certificate: "/uploads/oasis-certificate.png"
   }
 ];
 

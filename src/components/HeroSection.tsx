@@ -23,9 +23,9 @@ export const HeroSection = () => {
         >
           <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-6">
             <img 
-              src="/lovable-uploads/Original_Photo-removebg-preview.png" 
+              src="/uploads/Profile.jpeg" 
               alt="Roobak Kumar M" 
-              className="w-20 h-20 md:w-32 md:h-32 rounded-full object-cover object-top"
+              className="w-20 h-20 md:w-32 md:h-32 rounded-2xl md:rounded-[2rem] object-cover object-top border border-white/10 shadow-[0_0_25px_rgba(255,255,255,0.1)] transition-all duration-300 hover:scale-105 hover:border-white/20 hover:shadow-[0_0_35px_rgba(255,255,255,0.2)]"
             />
             <h1 className="text-5xl md:text-7xl font-bold text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
               Roobak Kumar M

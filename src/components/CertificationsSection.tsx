@@ -4,14 +4,14 @@ import { Award, Cloud, Shield, Cpu, Users, Database } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 
 const certifications = [
-  { name: "AWS Cloud Practitioner", provider: "AWS", icon: Cloud, color: "#f97316", image: "/lovable-uploads/7dd95db7-4b58-494a-9028-4c918d8764a7.png" },
-  { name: "Azure Fundamentals", provider: "Microsoft", icon: Cloud, color: "#3b82f6", image: "/lovable-uploads/c4ad2300-ee66-49d5-b79c-893df23a76c7.png" },
-  { name: "Google AI Essentials", provider: "Google", icon: Cpu, color: "#22c55e", image: "/lovable-uploads/005c8822-2f25-45ee-9ed8-cd2c0ad35509.png" },
-  { name: "Intro to Cybersecurity", provider: "Cisco", icon: Shield, color: "#ef4444", image: "/lovable-uploads/13cbb9b6-ca81-4b25-80d1-7621feef1799.png" },
-  { name: "SQL (Basic)", provider: "HackerRank", icon: Database, color: "#a855f7", image: "/lovable-uploads/8de3a9e0-fe60-4323-8604-671e5e1143a9.png" },
-  { name: "Java (Basic)", provider: "HackerRank", icon: Award, color: "#f59e0b", image: "/lovable-uploads/28cb5318-4b47-4b78-87c8-4c56496b0523.png" },
-  { name: "Problem Solving (Basic)", provider: "HackerRank", icon: Cpu, color: "#10b981", image: "/lovable-uploads/06165a57-198d-409a-840e-275c0df49163.png" },
-  { name: "Developing Soft Skills", provider: "NPTEL", icon: Users, color: "#ec4899", image: "/lovable-uploads/c09cfcbe-52c5-43e1-ac0a-4995d2075acb.png" }
+  { name: "AWS Cloud Practitioner", provider: "AWS", icon: Cloud, color: "#f97316", image: "/uploads/aws-cloud-practitioner.png" },
+  { name: "Azure Fundamentals", provider: "Microsoft", icon: Cloud, color: "#3b82f6", image: "/uploads/azure-fundamentals.png" },
+  { name: "Google AI Essentials", provider: "Google", icon: Cpu, color: "#22c55e", image: "/uploads/google-ai-essentials.png" },
+  { name: "Intro to Cybersecurity", provider: "Cisco", icon: Shield, color: "#ef4444", image: "/uploads/intro-to-cybersecurity.png" },
+  { name: "SQL (Basic)", provider: "HackerRank", icon: Database, color: "#a855f7", image: "/uploads/sql-basic.png" },
+  { name: "Java (Basic)", provider: "HackerRank", icon: Award, color: "#f59e0b", image: "/uploads/java-basic.png" },
+  { name: "Problem Solving (Basic)", provider: "HackerRank", icon: Cpu, color: "#10b981", image: "/uploads/problem-solving-basic.png" },
+  { name: "Developing Soft Skills", provider: "NPTEL", icon: Users, color: "#ec4899", image: "/uploads/developing-soft-skills.png" }
 ];
 
 export const CertificationsSection = () => {
